@@ -8,7 +8,7 @@
     <link href="/2024/09/18/%E6%B5%8B%E8%AF%95%E6%96%87%E7%AB%A0/"/>
     <url>/2024/09/18/%E6%B5%8B%E8%AF%95%E6%96%87%E7%AB%A0/</url>
     
-    <content type="html"><![CDATA[<p>这是我的第一次创建，属于测试文章。</p>]]></content>
+    <content type="html"><![CDATA[<p>这是我的第一次创建，属于测试文章。</p><p><img src="/Users/frank/hexo-blog/source/_posts/%E6%B5%8B%E8%AF%95%E6%96%87%E7%AB%A0/test.jpeg" alt="test"></p>]]></content>
     
     
     
@@ -36,7 +36,7 @@
   
   
   <entry>
-    <title></title>
+    <title>《文城》书评</title>
     <link href="/2024/07/31/%E3%80%8A%E6%96%87%E5%9F%8E%E3%80%8B/"/>
     <url>/2024/07/31/%E3%80%8A%E6%96%87%E5%9F%8E%E3%80%8B/</url>
     
@@ -44,12 +44,18 @@
     
     
     
+    <tags>
+      
+      <tag>原创</tag>
+      
+    </tags>
+    
   </entry>
   
   
   
   <entry>
-    <title></title>
+    <title>学习笔记</title>
     <link href="/2024/07/17/DO%EF%BC%9A%E8%BF%9E%E6%8E%A5%E6%95%B0%E6%8D%AE%E5%BA%93%EF%BC%8C%E7%94%9F%E6%88%90%E6%95%B0%E6%8D%AE%E5%BA%93%E5%AF%B9%E8%B1%A1@AllArgsConstructor%20%E8%87%AA%E5%8A%A8%E7%94%9F%E6%88%90%E5%85%A8%E5%8F%82%E6%9E%84%E9%80%A0%E6%96%B9%E6%B3%95%E3%80%82@NoArgsConstructor%20%E8%87%AA%E5%8A%A8%E7%94%9F%E6%88%90%E6%97%A0%E5%8F%82%E6%9E%84%E9%80%A0%E6%96%B9%E6%B3%95%E3%80%82@Data%20%E8%87%AA%E5%8A%A8%E7%94%9F%E6%88%90%E6%89%80%E6%9C%89%E5%B1%9E%E6%80%A7%E7%9A%84getter%E5%92%8Csetter%E6%96%B9%E6%B3%95%EF%BC%8C%E4%BB%A5%E5%8F%8AtoStrin/"/>
     <url>/2024/07/17/DO%EF%BC%9A%E8%BF%9E%E6%8E%A5%E6%95%B0%E6%8D%AE%E5%BA%93%EF%BC%8C%E7%94%9F%E6%88%90%E6%95%B0%E6%8D%AE%E5%BA%93%E5%AF%B9%E8%B1%A1@AllArgsConstructor%20%E8%87%AA%E5%8A%A8%E7%94%9F%E6%88%90%E5%85%A8%E5%8F%82%E6%9E%84%E9%80%A0%E6%96%B9%E6%B3%95%E3%80%82@NoArgsConstructor%20%E8%87%AA%E5%8A%A8%E7%94%9F%E6%88%90%E6%97%A0%E5%8F%82%E6%9E%84%E9%80%A0%E6%96%B9%E6%B3%95%E3%80%82@Data%20%E8%87%AA%E5%8A%A8%E7%94%9F%E6%88%90%E6%89%80%E6%9C%89%E5%B1%9E%E6%80%A7%E7%9A%84getter%E5%92%8Csetter%E6%96%B9%E6%B3%95%EF%BC%8C%E4%BB%A5%E5%8F%8AtoStrin/</url>
     
@@ -57,18 +63,30 @@
     
     
     
+    <tags>
+      
+      <tag>原创</tag>
+      
+    </tags>
+    
   </entry>
   
   
   
   <entry>
-    <title></title>
-    <link href="/2024/07/11/SpringBoot%E5%AD%A6%E4%B9%A0/"/>
-    <url>/2024/07/11/SpringBoot%E5%AD%A6%E4%B9%A0/</url>
+    <title>测试文章</title>
+    <link href="/2024/07/17/SpringBoot%E5%AD%A6%E4%B9%A0/"/>
+    <url>/2024/07/17/SpringBoot%E5%AD%A6%E4%B9%A0/</url>
     
     <content type="html"><![CDATA[<h2 id="SpringBoot学习"><a href="#SpringBoot学习" class="headerlink" title="SpringBoot学习"></a>SpringBoot学习</h2><p>启动类</p><p>lombok- - - 实现@data</p><pre><code class="hljs">    &lt;dependency&gt;        &lt;groupId&gt;org.projectlombok&lt;/groupId&gt;        &lt;artifactId&gt;lombok&lt;/artifactId&gt;        &lt;version&gt;1.18.10&lt;/version&gt;    &lt;/dependency&gt;</code></pre><p>层级关系<a href="https://github.com/CodingDocs/springboot-guide/blob/master/docs/basis/springboot-mybatis.md">https://github.com/CodingDocs/springboot-guide/blob/master/docs/basis/springboot-mybatis.md</a></p>]]></content>
     
     
+    
+    <tags>
+      
+      <tag>原创</tag>
+      
+    </tags>
     
   </entry>
   
