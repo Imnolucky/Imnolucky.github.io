@@ -1,0 +1,821 @@
+
+
+<!DOCTYPE html>
+<html lang="zh-CN" data-default-color-scheme=auto>
+
+
+
+<head>
+  <meta charset="UTF-8">
+
+  <link rel="apple-touch-icon" sizes="76x76" href="/img/fluid.png">
+  <link rel="icon" href="/img/fluid.png">
+  
+
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=5.0, shrink-to-fit=no">
+  <meta http-equiv="x-ua-compatible" content="ie=edge">
+  
+  <meta name="theme-color" content="#2f4154">
+  <meta name="author" content="Li linfeng">
+  <meta name="keywords" content="">
+  
+    <meta name="description" content="DO：连接数据库，生成数据库对象  @AllArgsConstructor: 自动生成全参构造方法。  @NoArgsConstructor: 自动生成无参构造方法。  @Data: 自动生成所有属性的getter和setter方法，以及toString、equals和hashCode方法。  @TableName(&quot;device_area&quot;): 这是MyBatis-Plus">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Info">
+<meta property="og:url" content="http://example.com/2024/07/17/DO%EF%BC%9A%E8%BF%9E%E6%8E%A5%E6%95%B0%E6%8D%AE%E5%BA%93%EF%BC%8C%E7%94%9F%E6%88%90%E6%95%B0%E6%8D%AE%E5%BA%93%E5%AF%B9%E8%B1%A1@AllArgsConstructor%20%E8%87%AA%E5%8A%A8%E7%94%9F%E6%88%90%E5%85%A8%E5%8F%82%E6%9E%84%E9%80%A0%E6%96%B9%E6%B3%95%E3%80%82@NoArgsConstructor%20%E8%87%AA%E5%8A%A8%E7%94%9F%E6%88%90%E6%97%A0%E5%8F%82%E6%9E%84%E9%80%A0%E6%96%B9%E6%B3%95%E3%80%82@Data%20%E8%87%AA%E5%8A%A8%E7%94%9F%E6%88%90%E6%89%80%E6%9C%89%E5%B1%9E%E6%80%A7%E7%9A%84getter%E5%92%8Csetter%E6%96%B9%E6%B3%95%EF%BC%8C%E4%BB%A5%E5%8F%8AtoStrin/index.html">
+<meta property="og:site_name" content="Info">
+<meta property="og:description" content="DO：连接数据库，生成数据库对象  @AllArgsConstructor: 自动生成全参构造方法。  @NoArgsConstructor: 自动生成无参构造方法。  @Data: 自动生成所有属性的getter和setter方法，以及toString、equals和hashCode方法。  @TableName(&quot;device_area&quot;): 这是MyBatis-Plus">
+<meta property="og:locale" content="zh_CN">
+<meta property="article:published_time" content="2024-07-17T07:40:58.608Z">
+<meta property="article:modified_time" content="2024-07-17T07:40:58.609Z">
+<meta property="article:author" content="Li linfeng">
+<meta name="twitter:card" content="summary_large_image">
+  
+  
+  
+  <title>Info</title>
+
+  <link  rel="stylesheet" href="https://lib.baomitu.com/twitter-bootstrap/4.6.1/css/bootstrap.min.css" />
+
+
+
+  <link  rel="stylesheet" href="https://lib.baomitu.com/github-markdown-css/4.0.0/github-markdown.min.css" />
+
+  <link  rel="stylesheet" href="https://lib.baomitu.com/hint.css/2.7.0/hint.min.css" />
+
+  <link  rel="stylesheet" href="https://lib.baomitu.com/fancybox/3.5.7/jquery.fancybox.min.css" />
+
+
+
+<!-- 主题依赖的图标库，不要自行修改 -->
+<!-- Do not modify the link that theme dependent icons -->
+
+<link rel="stylesheet" href="//at.alicdn.com/t/c/font_1749284_5i9bdhy70f8.css">
+
+
+
+<link rel="stylesheet" href="//at.alicdn.com/t/c/font_1736178_k526ubmyhba.css">
+
+
+<link  rel="stylesheet" href="/css/main.css" />
+
+
+  <link id="highlight-css" rel="stylesheet" href="/css/highlight.css" />
+  
+    <link id="highlight-css-dark" rel="stylesheet" href="/css/highlight-dark.css" />
+  
+
+
+
+
+  <script id="fluid-configs">
+    var Fluid = window.Fluid || {};
+    Fluid.ctx = Object.assign({}, Fluid.ctx)
+    var CONFIG = {"hostname":"example.com","root":"/","version":"1.9.8","typing":{"enable":true,"typeSpeed":70,"cursorChar":"_","loop":false,"scope":[]},"anchorjs":{"enable":true,"element":"h1,h2,h3,h4,h5,h6","placement":"left","visible":"hover","icon":""},"progressbar":{"enable":true,"height_px":3,"color":"#29d","options":{"showSpinner":false,"trickleSpeed":100}},"code_language":{"enable":true,"default":"TEXT"},"copy_btn":true,"image_caption":{"enable":true},"image_zoom":{"enable":true,"img_url_replace":["",""]},"toc":{"enable":true,"placement":"right","headingSelector":"h1,h2,h3,h4,h5,h6","collapseDepth":0},"lazyload":{"enable":true,"loading_img":"/img/loading.gif","onlypost":false,"offset_factor":2},"web_analytics":{"enable":true,"follow_dnt":true,"baidu":null,"google":{"measurement_id":null},"tencent":{"sid":null,"cid":null},"leancloud":{"app_id":"1ldGFgHDOaIFNaZFLMvVGGBG-gzGzoHsz","app_key":"HHj4L6UxOhxU6w2DA3AuTsVU","server_url":"https://1ldgfghd.lc-cn-n1-shared.com","path":"window.location.pathname","ignore_local":false},"umami":{"src":null,"website_id":null,"domains":null,"start_time":"2024-01-01T00:00:00.000Z","token":null,"api_server":null}},"search_path":"/local-search.xml","include_content_in_search":true};
+
+    if (CONFIG.web_analytics.follow_dnt) {
+      var dntVal = navigator.doNotTrack || window.doNotTrack || navigator.msDoNotTrack;
+      Fluid.ctx.dnt = dntVal && (dntVal.startsWith('1') || dntVal.startsWith('yes') || dntVal.startsWith('on'));
+    }
+  </script>
+  <script  src="/js/utils.js" ></script>
+  <script  src="/js/color-schema.js" ></script>
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+    
+  
+
+
+
+  
+<meta name="generator" content="Hexo 7.3.0"></head>
+
+
+<body>
+  
+
+  <header>
+    
+
+<div class="header-inner" style="height: 70vh;">
+  <nav id="navbar" class="navbar fixed-top  navbar-expand-lg navbar-dark scrolling-navbar">
+  <div class="container">
+    <a class="navbar-brand" href="/">
+      <strong>Info</strong>
+    </a>
+
+    <button id="navbar-toggler-btn" class="navbar-toggler" type="button" data-toggle="collapse"
+            data-target="#navbarSupportedContent"
+            aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+      <div class="animated-icon"><span></span><span></span><span></span></div>
+    </button>
+
+    <!-- Collapsible content -->
+    <div class="collapse navbar-collapse" id="navbarSupportedContent">
+      <ul class="navbar-nav ml-auto text-center">
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/" target="_self">
+                <i class="iconfont icon-home-fill"></i>
+                <span>首页</span>
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/archives/" target="_self">
+                <i class="iconfont icon-archive-fill"></i>
+                <span>归档</span>
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/categories/" target="_self">
+                <i class="iconfont icon-category-fill"></i>
+                <span>分类</span>
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/tags/" target="_self">
+                <i class="iconfont icon-tags-fill"></i>
+                <span>标签</span>
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/about/" target="_self">
+                <i class="iconfont icon-user-fill"></i>
+                <span>关于</span>
+              </a>
+            </li>
+          
+        
+        
+          <li class="nav-item" id="search-btn">
+            <a class="nav-link" target="_self" href="javascript:;" data-toggle="modal" data-target="#modalSearch" aria-label="Search">
+              <i class="iconfont icon-search"></i>
+            </a>
+          </li>
+          
+        
+        
+          <li class="nav-item" id="color-toggle-btn">
+            <a class="nav-link" target="_self" href="javascript:;" aria-label="Color Toggle">
+              <i class="iconfont icon-dark" id="color-toggle-icon"></i>
+            </a>
+          </li>
+        
+      </ul>
+    </div>
+  </div>
+</nav>
+
+  
+
+<div id="banner" class="banner" parallax=true
+     style="background: url('/img/default.png') no-repeat center center; background-size: cover;">
+  <div class="full-bg-img">
+    <div class="mask flex-center" style="background-color: rgba(0, 0, 0, 0.3)">
+      <div class="banner-text text-center fade-in-up">
+        <div class="h2">
+          
+            <span id="subtitle" data-typed-text=""></span>
+          
+        </div>
+
+        
+          
+  <div class="mt-3">
+    
+    
+      <span class="post-meta">
+        <i class="iconfont icon-date-fill" aria-hidden="true"></i>
+        <time datetime="2024-07-17 15:40" pubdate>
+          2024年7月17日 下午
+        </time>
+      </span>
+    
+  </div>
+
+  <div class="mt-1">
+    
+      <span class="post-meta mr-2">
+        <i class="iconfont icon-chart"></i>
+        
+          2.4k 字
+        
+      </span>
+    
+
+    
+      <span class="post-meta mr-2">
+        <i class="iconfont icon-clock-fill"></i>
+        
+        
+        
+          21 分钟
+        
+      </span>
+    
+
+    
+    
+      
+        <span id="leancloud-page-views-container" class="post-meta" style="display: none">
+          <i class="iconfont icon-eye" aria-hidden="true"></i>
+          <span id="leancloud-page-views"></span> 次
+        </span>
+        
+      
+      
+    
+  </div>
+
+
+        
+      </div>
+
+      
+    </div>
+  </div>
+</div>
+
+</div>
+
+  </header>
+
+  <main>
+    
+      
+
+<div class="container-fluid nopadding-x">
+  <div class="row nomargin-x">
+    <div class="side-col d-none d-lg-block col-lg-2">
+      
+
+    </div>
+
+    <div class="col-lg-8 nopadding-x-md">
+      <div class="container nopadding-x-md" id="board-ctn">
+        <div id="board">
+          <article class="post-content mx-auto">
+            <h1 id="seo-header"></h1>
+            
+            
+              <div class="markdown-body">
+                
+                <ol>
+<li><p>DO：连接数据库，生成数据库对象</p>
+<ul>
+<li><p><code>@AllArgsConstructor</code>: 自动生成全参构造方法。</p>
+</li>
+<li><p><code>@NoArgsConstructor</code>: 自动生成无参构造方法。</p>
+</li>
+<li><p><code>@Data</code>: 自动生成所有属性的getter和setter方法，以及toString、equals和hashCode方法。</p>
+</li>
+<li><p><code>@TableName(&quot;device_area&quot;)</code>: 这是MyBatis-Plus提供的注解，用于指定数据库表名为 <code>device_area</code>，使得该类可以映射到名为 <code>device_area</code> 的数据库表。</p>
+</li>
+<li><p><code>@TableField(&quot;parent_id&quot;)</code>: 指定该字段对应数据库表中的 <code>parent_id</code> 列。</p>
+</li>
+<li><p><code>@ApiModelProperty(value = &quot;父id&quot;)</code>: 用于生成API文档，指定该属性在API文档中的描述。</p>
+</li>
+</ul>
+</li>
+<li><p>VO：用于前端和后端的数据传递。</p>
+<ul>
+<li><code>@TableId</code>: 这是MyBatis-Plus提供的注解，用于指定该字段是数据库表的主键，表明 <code>id</code> 字段对应数据库表中的主键列。</li>
+<li><code>@Accessors(chain = true)</code>: 这也是Lombok注解，用于生成链式setter方法，可以实现 <code>setXxx().setYyy().setZzz()</code> 这样的链式调用。</li>
+</ul>
+</li>
+<li><p>Service</p>
+<ul>
+<li><p><code>@Override</code>: 表示该方法是重写自父类或接口的方法。</p>
+</li>
+<li><p><code>@Transactional(rollbackFor = Exception.class)</code>: 表示该方法在执行时开启事务，当发生任何异常时都会回滚事务，即保证了操作的原子性和一致性。   </p>
+<p> @Transactional(rollbackFor &#x3D; Exception.class)</p>
+<p>意味着如果方法中抛出了任何 Exception 及其子类的异常，事务都应该回滚。这样可以确保在遇到意外情况时，数据库不会处于一个不一致的状态。</p>
+</li>
+<li><p>使用 <code>BeanUtils.copyProperties</code> 将 <code>DeviceAreaRequestVO</code> 转换为 <code>DeviceArea</code> 实体对象，并添加到 <code>deviceAreaDOS</code> 列表中。</p>
+<p><code>BeanUtils.copyProperties(e, deviceArea);   deviceAreaDOS.add(deviceArea);</code></p>
+</li>
+<li><pre><code class="hljs">Long id = vos.get(0).getId();
+<figure class="highlight autohotkey"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><code class="hljs autohotkey"><br><span class="hljs-title">- `vos.get(0)`:</span> 获取 `vos` 列表中的第一个元素。<br><span class="hljs-title">- `.getId()`:</span> 获取该元素的 `id` 属性，假设 `DeviceAreaRequestVO` 类中有一个 `getId()` 方法用于获取 `id` 属性。<br><span class="hljs-title">- `Long id`:</span> 将获取到的 `id` 赋值给 `id` 变量，这样 `id` 变量现在持有第一个元素的 `id` 值。<br><br>```java<br>javaSet&lt;String&gt; names = vos.stream()<br><span class="hljs-title">    .map(DeviceAreaRequestVO::</span>getName)  // 将每个 DeviceAreaRequestVO 对象映射为其 name 属性<br>    .collect(Collectors.toSet())<span class="hljs-comment">;       // 将映射结果收集到一个 Set 中（自动去重）</span><br></code></pre></td></tr></table></figure>
+
+- `vos.stream()`: 将 `vos` 列表转换为一个流，使得可以进行流式操作。
+- `.map(DeviceAreaRequestVO::getName)`: 使用 `map` 操作将每个 `DeviceAreaRequestVO` 对象映射为其 `name` 属性。这里使用了方法引用的方式，`DeviceAreaRequestVO::getName` 等效于 `vo -&gt; vo.getName()`。
+- `.collect(Collectors.toSet())`: 使用 `collect` 操作将流中的元素收集到一个 `Set` 集合中。由于 `Set` 不允许重复元素，所以这样可以确保 `names` 集合中的元素是唯一的。
+</code></pre>
+</li>
+<li><pre><code class="hljs">public static &lt;K, V&gt; List&lt;V&gt; copyList(List&lt;K&gt; source, Class&lt;V&gt; zclass)
+<figure class="highlight markdown"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><code class="hljs markdown"><br><span class="hljs-bullet">-</span> <span class="hljs-code">`public static`</span>: 表示这是一个公共静态方法，可以通过类名直接调用。<br><br><span class="hljs-bullet">-</span> <span class="hljs-code">`&lt;K, V&gt;`</span>: 这是泛型声明，其中 <span class="hljs-code">`K`</span> 表示源列表中元素的类型，<span class="hljs-code">`V`</span> 表示目标列表中元素的类型。<br><br><span class="hljs-bullet">-</span> <span class="hljs-code">`List&lt;V&gt;`</span>: 返回一个 <span class="hljs-code">`V`</span> 类型的列表，即目标列表。<br><br><span class="hljs-bullet">-</span> <span class="hljs-code">```</span><br><span class="hljs-code">  copyList(List&lt;K&gt; source, Class&lt;V&gt; zclass)</span><br></code></pre></td></tr></table></figure>
+
+  方法名为 copyList，接受两个参数：
+
+  `source`: 源列表，类型为 `List&lt;K&gt;`，其中 `K` 是源列表中元素的类型。
+
+  `zclass`: 目标类的 `Class` 对象，表示目标列表中元素的类型。
+</code></pre>
+</li>
+<li><p><code>CollUtil.isEmpty()</code> 的作用类似于 <code>CollectionUtils.isEmpty()</code>（Apache Commons Collections 中的方法）或者 <code>Collections.isNullOrEmpty()</code>（Guava 中的方法），用来判断集合是否为空，即集合为 <code>null</code> 或者没有元素。</p>
+</li>
+<li></li>
+</ul>
+</li>
+<li><p>数据库（Mybatis）</p>
+<ul>
+<li>使用 <code>saveBatch</code> 方法批量保存列表中的数据。</li>
+</ul>
+</li>
+</ol>
+<ul>
+<li>直接调用 <code>updateBatchById</code> 方法批量更新列表中的数据，每次最多500条。<ul>
+<li><code>list(deviceAreaDOQueryWrapper)</code> 使用 <code>QueryWrapper</code> 执行查询，并获取符合条件的 <code>DeviceArea</code> 实体列表。</li>
+</ul>
+</li>
+<li><code>list</code> 包含满足查询条件的 <code>DeviceArea</code> 实体列表。</li>
+</ul>
+<ol start="5">
+<li>修改状态</li>
+</ol>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><code class="hljs java"><span class="hljs-meta">@Override</span><br> <span class="hljs-meta">@Transactional(rollbackFor = Exception.class)</span><br> <span class="hljs-keyword">public</span> <span class="hljs-keyword">void</span> <span class="hljs-title function_">enableArea</span><span class="hljs-params">(DeviceAreaRequestVO deviceAreaRequestVO)</span> &#123;<br>     UpdateWrapper&lt;DeviceAreaDO&gt; deviceAreaUpdateWrapper = <span class="hljs-keyword">new</span> <span class="hljs-title class_">UpdateWrapper</span>&lt;&gt;();<br>     deviceAreaUpdateWrapper.lambda().set(DeviceAreaDO::getStatus, deviceAreaRequestVO.getStatus())<br>             .eq(DeviceAreaDO::getId, deviceAreaRequestVO.getId());<br>     update(deviceAreaUpdateWrapper);<br> &#125;<br></code></pre></td></tr></table></figure>
+
+<ul>
+<li><p>方法内部使用了 MyBatis-Plus 的 <code>UpdateWrapper</code> 类来构建更新条件和更新操作。<code>UpdateWrapper</code> 是 MyBatis-Plus 提供的一个方便构建更新条件的工具类。</p>
+</li>
+<li><pre><code class="hljs">deviceAreaUpdateWrapper.lambda().set(...)
+<figure class="highlight autohotkey"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><code class="hljs autohotkey"><br>  部分使用了 Lambda 表达式来指定要更新的字段和更新条件：<br><br><span class="hljs-title">  - `.set(DeviceAreaDO::</span>getStatus, deviceAreaRequestVO.getStatus())`：将 `DeviceAreaDO` 对象的 `status` 属性设置为 `deviceAreaRequestVO` 中的状态值。<br><span class="hljs-title">  - `.eq(DeviceAreaDO::</span>getId, deviceAreaRequestVO.getId())`：设置更新条件，即只更新 `id` 等于 `deviceAreaRequestVO` 中指定的 id 的记录。<br><br>- 最后，通过 `update(deviceAreaUpdateWrapper)` 方法来执行更新操作。<br><br><span class="hljs-number">6</span>. ```f<span class="hljs-literal">or</span>(a:b)<br><span class="hljs-title">   for(A:</span>B)&#123;&#125;在B中遍历A<br></code></pre></td></tr></table></figure>
+</code></pre>
+</li>
+</ul>
+<ol start="7">
+<li><p><code>Wrapper&lt;DeviceAreaDO&gt;</code>：返回类型是一个泛型类 <code>Wrapper</code>，它的泛型参数是 <code>DeviceAreaDO</code> 类型，表明这个方法返回一个用于构建 <code>DeviceAreaDO</code> 对象查询条件的包装器。<DeveceAreaDO>用来指定这wrapper查询参数的类型。wrapper并不是一个执行函数，而是一个构建工具，用来封装查询条件。</p>
+<figure class="highlight ruby"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><code class="hljs ruby"><span class="hljs-title class_">QueryWrapper</span>&lt;<span class="hljs-title class_">DeviceArea</span>DO&gt; deviceAreaDOQueryWrapper = new <span class="hljs-title class_">QueryWrapper</span>&lt;&gt;();<br>deviceAreaDOQueryWrapper.<span class="hljs-built_in">lambda</span>().<span class="hljs-keyword">in</span>(<span class="hljs-title class_">DeviceArea</span>DO::getName, names);<br><span class="hljs-regexp">//device</span>AreaDOQuertWrapper只是创建出来，是一个封装查询条件的实例，但是还没有具体的条件，使用<span class="hljs-built_in">lambda</span>表达式，<span class="hljs-keyword">in</span>来指定查询条件，条件是”<span class="hljs-variable constant_">DO</span>的name在names中“<br><span class="hljs-title class_">List</span>&lt;<span class="hljs-title class_">DeviceArea</span>DO&gt; list = list(deviceAreaDOQueryWrapper);<br><span class="hljs-regexp">//list</span>(deviceAreaDOQueryWrapper)根据封装好的查询条件进行查询，并且将返回结果放在list里面。默认查询配置的数据库。<br></code></pre></td></tr></table></figure>
+
+<figure class="highlight lasso"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><code class="hljs lasso">   @Override<br>    @Transactional(rollbackFor = Exception.class)<br>    <span class="hljs-keyword">public</span> <span class="hljs-literal">void</span> enableArea(DeviceAreaRequestVO deviceAreaRequestVO) &#123;<br>        UpdateWrapper&lt;DeviceAreaDO&gt; deviceAreaUpdateWrapper = <span class="hljs-literal">new</span> UpdateWrapper&lt;&gt;();<br>        deviceAreaUpdateWrapper.lambda().<span class="hljs-built_in">set</span>(DeviceAreaDO<span class="hljs-type">::getStatus</span>, deviceAreaRequestVO.getStatus())<br>                .<span class="hljs-literal">eq</span>(DeviceAreaDO<span class="hljs-type">::getId</span>, deviceAreaRequestVO.getId());<br>        update(deviceAreaUpdateWrapper);<br>    &#125;<br>来看看基于wrapper的更新操作，这里使用UpdateWrapper，表明是用来更新的条件，创建好一个实例之后，用lamda表达式来说明条件。.<span class="hljs-built_in">set</span>()指定的是将<span class="hljs-keyword">DO</span>对象的status属性设置为VO对象的status，还有个条件是<span class="hljs-literal">eq</span>，即两者id相等。设置好要进行的更改操作和条件之后进行执行，update。update() 方法是继承自 BaseMapper 的方法，用于执行数据库更新操作，参数是之前构建好的 UpdateWrapper 对象 deviceAreaUpdateWrapper<br></code></pre></td></tr></table></figure>
+
+<figure class="highlight less"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><code class="hljs less"> <span class="hljs-variable">@Override</span><br>    <span class="hljs-variable">@Transactional</span>(rollbackFor = Exception.class)<br>    public void <span class="hljs-built_in">removeByIds</span>(List&lt;Long&gt; ids) &#123;<br>        <span class="hljs-selector-tag">if</span> (CollUtil.<span class="hljs-built_in">isNotEmpty</span>(ids)) &#123;<br>            <span class="hljs-selector-tag">checkParentNode</span>(ids);<br>            <span class="hljs-selector-tag">this</span><span class="hljs-selector-class">.removeBatchByIds</span>(ids);<br>        &#125;<br>    &#125;<br><span class="hljs-comment">//再看一个删除操作，这个就简单了，this.removeBatchByIds(ids): 假设是继承自 BaseMapper 的方法，用于批量根据 ID 删除数据库中对应的记录。this 表示当前类或对象。ids是一个id的list，所以可以直接删除很多，也相当于检查id = id，这个id是作为表的主键列的。</span><br></code></pre></td></tr></table></figure>
+
+<figure class="highlight pgsql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><code class="hljs pgsql">List&lt;DeviceAreaDO&gt; dos = this.baseMapper.selectList(buildWrapper(lastName));<br>//来看这一句比较简练的代码，buildWrapper是之前的一个函数，用来用参数名字查询<span class="hljs-keyword">DO</span>，返回值是一个<span class="hljs-keyword">wrapper</span>实例，所以这里用selectlist进行执行，返回一个list。<br></code></pre></td></tr></table></figure>
+
+
+</li>
+<li><pre><code class="hljs">Set&lt;String&gt; names = vos.stream()
+                      .map(DeviceAreaRequestVO::getName)
+                      .collect(Collectors.toSet());
+//.stream 将集合 vos 转换为一个流（Stream），转换为流，省去遍历操作，直接可以对每个元素进行处理。
+//.map映射，相当于现在不保存整个VO对象了，只取VO对象里的name属性，getName是VO对象的get方法。
+//进行第二步操作之后，是name流，这个时候再把name收集起来，作为一个集合，也就是.collect就是收集，Collectors.toSet()指定了集合类型，即set，set集合的特点是不允许重复的元素，所以就过滤掉了重复的name。
+<figure class="highlight"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><code class="hljs"><br>   <br><br></code></pre></td></tr></table></figure>
+private List&lt;DeviceAreaRequestVO&gt; convertToRequestVO(List&lt;DeviceAreaExcelVO&gt; excelVOs) &#123;
+    return excelVOs.stream()
+            .map(excelVO -&gt; &#123;
+                DeviceAreaRequestVO requestVO = new DeviceAreaRequestVO();
+                requestVO.setName(excelVO.getName());
+                requestVO.setCode(excelVO.getCode());
+                requestVO.setParentName(excelVO.getParentName());
+                requestVO.setLevel(excelVO.getLevel());
+                return requestVO;
+            &#125;)
+            .collect(Collectors.toList());
+&#125;
+//注意括号的作用域：首先把excelVOs转换为流，进行操作，对其中的每一个excelVO对象进行大括号里面的操作，将excelVO的属性复制给requestVO，然后返回requestVO，这个返回的requestVO会进行.collect操作，然后最后返回的是requestVO的集合。
+<figure class="highlight maxima"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><code class="hljs maxima"><br><br><br><span class="hljs-number">10</span>. ```<br>    String[] <span class="hljs-built_in">split</span> = name.<span class="hljs-built_in">split</span>(StrPool.SLASH);<br>    String lastName = <span class="hljs-built_in">split</span>[<span class="hljs-built_in">split</span>.<span class="hljs-built_in">length</span> - <span class="hljs-number">1</span>];<br>    新知识，对于<span class="hljs-built_in">string</span>类型，name.<span class="hljs-built_in">split</span>方法可以将这个<span class="hljs-built_in">string</span>对象按照（）里面给定的规则进行分割，并且返回结果是一个<span class="hljs-built_in">string</span>数组。<br>    <br></code></pre></td></tr></table></figure>
+</code></pre>
+</li>
+<li><pre><code class="hljs">
+ Map&lt;String, DeviceAreaDO&gt; tempMap = new HashMap&lt;&gt;();
+            dos.forEach(area -&gt; &#123;
+                String[] split1 = area.getAllPath().split(StrPool.COMMA);
+                List&lt;DeviceAreaDO&gt; tempList = this.baseMapper.selectList(Wrappers.&lt;DeviceAreaDO&gt;lambdaQuery().in(DeviceAreaDO::getId, (Object) split1));
+                String namePath = tempList.stream().map(DeviceAreaDO::getName).collect(Collectors.joining(StrPool.SLASH));
+                tempMap.put(namePath, area);
+            &#125;);
+            
+//看这一段比较复杂的代码，首先创建了一个hashmap，来存储键值对，这里键的类型是String，值的类型是DO。然后用一个lamda表达式，.foreach遍历dos里面的DO，对每一个DO进行里面的操作。使用DO对象的getAlPath方法获取DO对象的全路径，然后对这个路径进行.split，分割条件是逗号。最主要的是后面的查询条件，是ID在路径名里面的。类似于：
+SELECT * FROM device_area
+WHERE id IN (split1[0], split1[1], ..., split1[n-1]);
+<figure class="highlight pgsql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br></pre></td><td class="code"><pre><code class="hljs pgsql"><br><span class="hljs-number">12.</span> ```<br>      @Override<br>        <span class="hljs-built_in">public</span> List&lt;DeviceAreaResponseVO&gt; selectListForRecu(DeviceAreaRequestVO deviceAreaRequestVO) &#123;<br>            List&lt;DeviceAreaResponseVO&gt; deviceAreaResponseVOS = selectList(deviceAreaRequestVO);<br>            <span class="hljs-keyword">if</span> (CollUtil.isEmpty(deviceAreaResponseVOS)) &#123;<br>                <span class="hljs-keyword">return</span> <span class="hljs-built_in">new</span> ArrayList&lt;&gt;(<span class="hljs-number">0</span>);<br>            &#125;<br>            <span class="hljs-type">Integer</span> <span class="hljs-keyword">level</span> = deviceAreaResponseVOS.stream().min(Comparator.comparing(DeviceAreaResponseVO::getLevel)).<span class="hljs-keyword">get</span>().getLevel();<br>            deviceAreaResponseVOS.stream().<span class="hljs-keyword">filter</span>(s -&gt; s.getLevel().equals(<span class="hljs-keyword">level</span>)).<span class="hljs-keyword">forEach</span>(parent -&gt; getSonList(deviceAreaResponseVOS, parent.getId()));<br>            <span class="hljs-keyword">return</span> deviceAreaResponseVOS.stream().<span class="hljs-keyword">filter</span>(s -&gt; s.getLevel().equals(<span class="hljs-keyword">level</span>)).collect(Collectors.toList());<br>        &#125;<br>    这一部分代码， List&lt;DeviceAreaResponseVO&gt; deviceAreaResponseVOS = selectList(deviceAreaRequestVO);根据请求VO在数据库中查询并且返回给ResponseVOS<br>    .min(Comparator.comparing(DeviceAreaResponseVO::getLevel)):<br>    //主要是这里，.min方法返回的仍然是VO，是最小的VO，比较规则是VO的等级，括号里面定义的就是比较规则。<br>    min对象返回的类型是Optional&lt;DeviceAreaResponseVO&gt; 对象，所以要使用.<span class="hljs-keyword">get</span>()方法获取其中的VO，然后使用getLevel获取VO的等级。&lt;获取列表中某一条件的最小值&gt;<br></code></pre></td></tr></table></figure>
+</code></pre>
+</li>
+<li><pre><code class="hljs"> deviceAreaResponseVOS.stream().filter(s -&gt; s.getLevel().equals(level)).forEach(parent -&gt; getSonList(deviceAreaResponseVOS, parent.getId()));
+//Look at this，首先我们仍然先转换为流，之后使用.fliter用来选出满足某条件的对象，括号里面是过滤条件，这里是VO的等级等于level，fliter返回一个满足条件的流，然后foreach遍历。
+</code></pre>
+</li>
+<li></li>
+</ol>
+
+                
+              </div>
+            
+            <hr/>
+            <div>
+              <div class="post-metas my-3">
+  
+  
+</div>
+
+
+              
+  
+
+  <div class="license-box my-3">
+    <div class="license-title">
+      <div></div>
+      <div>http://example.com/2024/07/17/DO：连接数据库，生成数据库对象@AllArgsConstructor 自动生成全参构造方法。@NoArgsConstructor 自动生成无参构造方法。@Data 自动生成所有属性的getter和setter方法，以及toStrin/</div>
+    </div>
+    <div class="license-meta">
+      
+        <div class="license-meta-item">
+          <div>作者</div>
+          <div>Li linfeng</div>
+        </div>
+      
+      
+        <div class="license-meta-item license-meta-date">
+          <div>发布于</div>
+          <div>2024年7月17日</div>
+        </div>
+      
+      
+      
+        <div class="license-meta-item">
+          <div>许可协议</div>
+          <div>
+            
+              
+              
+                <a class="print-no-link" target="_blank" href="https://creativecommons.org/licenses/by/4.0/">
+                  <span class="hint--top hint--rounded" aria-label="BY - 署名">
+                    <i class="iconfont icon-cc-by"></i>
+                  </span>
+                </a>
+              
+            
+          </div>
+        </div>
+      
+    </div>
+    <div class="license-icon iconfont"></div>
+  </div>
+
+
+
+              
+                <div class="post-prevnext my-3">
+                  <article class="post-prev col-6">
+                    
+                    
+                      <a href="/2024/07/31/%E3%80%8A%E6%96%87%E5%9F%8E%E3%80%8B/" title="">
+                        <i class="iconfont icon-arrowleft"></i>
+                        <span class="hidden-mobile"></span>
+                        <span class="visible-mobile">上一篇</span>
+                      </a>
+                    
+                  </article>
+                  <article class="post-next col-6">
+                    
+                    
+                      <a href="/2024/07/11/SpringBoot%E5%AD%A6%E4%B9%A0/" title="">
+                        <span class="hidden-mobile"></span>
+                        <span class="visible-mobile">下一篇</span>
+                        <i class="iconfont icon-arrowright"></i>
+                      </a>
+                    
+                  </article>
+                </div>
+              
+            </div>
+
+            
+  
+  
+    <article id="comments" lazyload>
+      
+  <div id="valine"></div>
+  <script type="text/javascript">
+    Fluid.utils.loadComments('#valine', function() {
+      Fluid.utils.createScript('https://lib.baomitu.com/valine/1.5.1/Valine.min.js', function() {
+        var options = Object.assign(
+          {"appId":"1ldGFgHDOaIFNaZFLMvVGGBG-gzGzoHsz","appKey":"HHj4L6UxOhxU6w2DA3AuTsVU","path":"window.location.pathname","placeholder":null,"avatar":"retro","meta":["nick","mail","link"],"requiredFields":[],"pageSize":10,"lang":"zh-CN","highlight":false,"recordIP":false,"serverURLs":"","emojiCDN":null,"emojiMaps":null,"enableQQ":false},
+          {
+            el: "#valine",
+            path: window.location.pathname
+          }
+        )
+        new Valine(options);
+        Fluid.utils.waitElementVisible('#valine .vcontent', () => {
+          var imgSelector = '#valine .vcontent img:not(.vemoji)';
+          Fluid.plugins.imageCaption(imgSelector);
+          Fluid.plugins.fancyBox(imgSelector);
+        })
+      });
+    });
+  </script>
+  <noscript>Please enable JavaScript to view the comments</noscript>
+
+
+    </article>
+  
+
+
+          </article>
+        </div>
+      </div>
+    </div>
+
+    <div class="side-col d-none d-lg-block col-lg-2">
+      
+  <aside class="sidebar" style="margin-left: -1rem">
+    <div id="toc">
+  <p class="toc-header">
+    <i class="iconfont icon-list"></i>
+    <span>目录</span>
+  </p>
+  <div class="toc-body" id="toc-body"></div>
+</div>
+
+
+
+  </aside>
+
+
+    </div>
+  </div>
+</div>
+
+
+
+
+
+  
+
+
+
+  
+
+
+
+  
+
+
+
+  
+
+
+
+  
+
+
+
+
+
+
+
+    
+
+    
+      <a id="scroll-top-button" aria-label="TOP" href="#" role="button">
+        <i class="iconfont icon-arrowup" aria-hidden="true"></i>
+      </a>
+    
+
+    
+      <div class="modal fade" id="modalSearch" tabindex="-1" role="dialog" aria-labelledby="ModalLabel"
+     aria-hidden="true">
+  <div class="modal-dialog modal-dialog-scrollable modal-lg" role="document">
+    <div class="modal-content">
+      <div class="modal-header text-center">
+        <h4 class="modal-title w-100 font-weight-bold">搜索</h4>
+        <button type="button" id="local-search-close" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body mx-3">
+        <div class="md-form mb-5">
+          <input type="text" id="local-search-input" class="form-control validate">
+          <label data-error="x" data-success="v" for="local-search-input">关键词</label>
+        </div>
+        <div class="list-group" id="local-search-result"></div>
+      </div>
+    </div>
+  </div>
+</div>
+
+    
+
+    
+  </main>
+
+  <footer>
+    <div class="footer-inner">
+  
+    <div class="footer-content">
+       <a href="https://hexo.io" target="_blank" rel="nofollow noopener"><span>Hexo</span></a> <i class="iconfont icon-love"></i> <a href="https://github.com/fluid-dev/hexo-theme-fluid" target="_blank" rel="nofollow noopener"><span>Fluid</span></a> 
+    </div>
+  
+  
+    <div class="statistics">
+  
+  
+
+  
+
+</div>
+
+  
+  
+</div>
+
+  </footer>
+
+  <!-- Scripts -->
+  
+  <script  src="https://lib.baomitu.com/nprogress/0.2.0/nprogress.min.js" ></script>
+  <link  rel="stylesheet" href="https://lib.baomitu.com/nprogress/0.2.0/nprogress.min.css" />
+
+  <script>
+    NProgress.configure({"showSpinner":false,"trickleSpeed":100})
+    NProgress.start()
+    window.addEventListener('load', function() {
+      NProgress.done();
+    })
+  </script>
+
+
+<script  src="https://lib.baomitu.com/jquery/3.6.4/jquery.min.js" ></script>
+<script  src="https://lib.baomitu.com/twitter-bootstrap/4.6.1/js/bootstrap.min.js" ></script>
+<script  src="/js/events.js" ></script>
+<script  src="/js/plugins.js" ></script>
+
+
+  <script  src="https://lib.baomitu.com/typed.js/2.0.12/typed.min.js" ></script>
+  <script>
+    (function (window, document) {
+      var typing = Fluid.plugins.typing;
+      var subtitle = document.getElementById('subtitle');
+      if (!subtitle || !typing) {
+        return;
+      }
+      var text = subtitle.getAttribute('data-typed-text');
+      
+        typing(text);
+      
+    })(window, document);
+  </script>
+
+
+
+
+  
+    <script  src="/js/img-lazyload.js" ></script>
+  
+
+
+
+
+  
+<script>
+  Fluid.utils.createScript('https://lib.baomitu.com/tocbot/4.20.1/tocbot.min.js', function() {
+    var toc = jQuery('#toc');
+    if (toc.length === 0 || !window.tocbot) { return; }
+    var boardCtn = jQuery('#board-ctn');
+    var boardTop = boardCtn.offset().top;
+
+    window.tocbot.init(Object.assign({
+      tocSelector     : '#toc-body',
+      contentSelector : '.markdown-body',
+      linkClass       : 'tocbot-link',
+      activeLinkClass : 'tocbot-active-link',
+      listClass       : 'tocbot-list',
+      isCollapsedClass: 'tocbot-is-collapsed',
+      collapsibleClass: 'tocbot-is-collapsible',
+      scrollSmooth    : true,
+      includeTitleTags: true,
+      headingsOffset  : -boardTop,
+    }, CONFIG.toc));
+    if (toc.find('.toc-list-item').length > 0) {
+      toc.css('visibility', 'visible');
+    }
+
+    Fluid.events.registerRefreshCallback(function() {
+      if ('tocbot' in window) {
+        tocbot.refresh();
+        var toc = jQuery('#toc');
+        if (toc.length === 0 || !tocbot) {
+          return;
+        }
+        if (toc.find('.toc-list-item').length > 0) {
+          toc.css('visibility', 'visible');
+        }
+      }
+    });
+  });
+</script>
+
+
+  <script src=https://lib.baomitu.com/clipboard.js/2.0.11/clipboard.min.js></script>
+
+  <script>Fluid.plugins.codeWidget();</script>
+
+
+  
+<script>
+  Fluid.utils.createScript('https://lib.baomitu.com/anchor-js/5.0.0/anchor.min.js', function() {
+    window.anchors.options = {
+      placement: CONFIG.anchorjs.placement,
+      visible  : CONFIG.anchorjs.visible
+    };
+    if (CONFIG.anchorjs.icon) {
+      window.anchors.options.icon = CONFIG.anchorjs.icon;
+    }
+    var el = (CONFIG.anchorjs.element || 'h1,h2,h3,h4,h5,h6').split(',');
+    var res = [];
+    for (var item of el) {
+      res.push('.markdown-body > ' + item.trim());
+    }
+    if (CONFIG.anchorjs.placement === 'left') {
+      window.anchors.options.class = 'anchorjs-link-left';
+    }
+    window.anchors.add(res.join(', '));
+
+    Fluid.events.registerRefreshCallback(function() {
+      if ('anchors' in window) {
+        anchors.removeAll();
+        var el = (CONFIG.anchorjs.element || 'h1,h2,h3,h4,h5,h6').split(',');
+        var res = [];
+        for (var item of el) {
+          res.push('.markdown-body > ' + item.trim());
+        }
+        if (CONFIG.anchorjs.placement === 'left') {
+          anchors.options.class = 'anchorjs-link-left';
+        }
+        anchors.add(res.join(', '));
+      }
+    });
+  });
+</script>
+
+
+  
+<script>
+  Fluid.utils.createScript('https://lib.baomitu.com/fancybox/3.5.7/jquery.fancybox.min.js', function() {
+    Fluid.plugins.fancyBox();
+  });
+</script>
+
+
+  <script>Fluid.plugins.imageCaption();</script>
+
+  <script defer src="/js/leancloud.js" ></script>
+
+  <script  src="/js/local-search.js" ></script>
+
+
+
+
+
+<!-- 主题的启动项，将它保持在最底部 -->
+<!-- the boot of the theme, keep it at the bottom -->
+<script  src="/js/boot.js" ></script>
+
+
+  
+
+  <noscript>
+    <div class="noscript-warning">博客在允许 JavaScript 运行的环境下浏览效果更佳</div>
+  </noscript>
+</body>
+</html>
